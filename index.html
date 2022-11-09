@@ -5,64 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- links -->
-    <link rel="stylesheet" type="text/css" href="../CalculadoraBostaCientifica/CSS/style.css"
-        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS\style.css"
+    <script src="JS/script.js"></script>
 
 
     <title>Calculadora</title>
 </head>
 <body>
+
+    <!-- HTML e Javascript da Calculadora -->
     <div class="container">
         <div class="display">
             <input id="screen" type="text" placeholder="0">
         </div>
 
-        <div class="btns">
+        <div class="botaos">
             <div class="row">
                 <button id="ce" onclick="backspc()">CE</button>
-                <button onclick="fact()">x!</button>
-                <button class="btn">(</button>
-                <button class="btn">)</button>
-                <button class="btn">%</button>
+                <button class="botao">(</button>
+                <button class="botao">)</button>
+                <button class="botao">%</button>
                 <button id="ac" onclick="screen.value=''">AC</button>
             </div>
 
             <div class="row">
                 <button onclick="sin()">sin</button>
                 <button onclick="pi()">π</button>
-                <button class="btn">7</button>
-                <button class="btn">8</button>
-                <button class="btn">9</button>
-                <button class="btn">÷</button>
+                <button class="botao">7</button>
+                <button class="botao">8</button>
+                <button class="botao">9</button>
+                <button class="botao">÷</button>
             </div>
 
             <div class="row">
                 <button onclick="cos()">cos</button>
                 <button onclick="log()">log</button>
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="btn">×</button>
+                <button class="botao">4</button>
+                <button class="botao">5</button>
+                <button class="botao">6</button>
+                <button class="botao">×</button>
             </div>
 
             <div class="row">
                 <button onclick="tan()">tan</button>
                 <button onclick="sqrt()">√</button>
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn">-</button>
+                <button class="botao">1</button>
+                <button class="botao">2</button>
+                <button class="botao">3</button>
+                <button class="botao">-</button>
             </div>
 
             <div class="row">
                 <button onclick="pow()">x <span style="position: relative; bottom: .4em; right: .1em;">y</span>
                 </button>
-                <button class="btn">0</button>
-                <button class="btn">.</button>
+                <button class="botao">0</button>
+                <button class="botao">.</button>
                 <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
-                <button class="btn">+</button>
+                <button class="botao">+</button>
             </div>
         </div>
     </div>
+
+    <script>
+        var screen = document.querySelector('#screen');
+        var botao = document.querySelectorAll('.botao');
+    
+        /*============ For getting the value of btn, Here we use for loop ============*/
+        for (item of botao) {
+            item.addEventListener('click', (e) => {
+                btntext = e.target.innerText;
+    
+                if (btntext == '×') {
+                    btntext = '*';
+                }
+    
+                if (btntext == '÷') {
+                    btntext = '/';
+                }
+                screen.value += btntext;
+            });
+        }
+    
+        function sin() {
+            screen.value = Math.sin(screen.value);
+        }
+    
+        function cos() {
+            screen.value = Math.cos(screen.value);
+        }
+    
+        function tan() {
+            screen.value = Math.tan(screen.value);
+        }
+    
+        function pow() {
+            screen.value = Math.pow(screen.value, 2);
+        }
+    
+        function sqrt() {
+            screen.value = Math.sqrt(screen.value, 2);
+        }
+    
+        function log() {
+            screen.value = Math.log(screen.value);
+        }
+    
+        function pi() {
+            screen.value = 3.14159265359;
+        }
+    
+        function backspc() {
+            screen.value = screen.value.substr(0, screen.value.length - 1);
+        }
+    </script>
+
 </body>
 </html>
